@@ -118,9 +118,9 @@ diff --git a/WORKSPACE b/WORKSPACE
 index 7057d3f149..3fedb4f543 100644
 --- a/WORKSPACE
 +++ b/WORKSPACE
-@@ -56,6 +56,12 @@ android_workspace()
- # Please add all new TensorFlow dependencies in workspace.bzl.
- tf_workspace()
+@@ -99,6 +99,12 @@ android_workspace()
+ load("//tensorflow:workspace.bzl", "tf_bind")
+ tf_bind()
 
 +new_local_repository(
 +    name = "local_arm_compiler",

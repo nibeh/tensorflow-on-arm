@@ -1,0 +1,38 @@
+diff --git a/tensorflow/lite/kernels/internal/BUILD b/tensorflow/lite/kernels/internal/BUILD
+index eb442598c7..63a093adcc 100644
+--- a/tensorflow/lite/kernels/internal/BUILD
++++ b/tensorflow/lite/kernels/internal/BUILD
+@@ -25,6 +25,9 @@ NEON_FLAGS_IF_APPLICABLE = select({
+         "-O3",
+         "-mfpu=neon",
+     ],
++    ":armeabi": [
++        "-O3",
++    ],
+     ":armeabi-v7a": [
+         "-O3",
+         "-mfpu=neon",
+@@ -76,6 +79,13 @@ config_setting(
+     },
+ )
+ 
++config_setting(
++    name = "armeabi",
++    values = {
++        "cpu": "armeabi",
++    },
++)
++
+ config_setting(
+     name = "arm64-v8a",
+     values = {
+@@ -622,6 +632,9 @@ cc_library(
+         ":arm64-v8a": [
+             ":neon_tensor_utils",
+         ],
++        ":armeabi": [
++            ":neon_tensor_utils",
++        ],
+         ":armeabi-v7a": [
+             ":neon_tensor_utils",
+         ],
